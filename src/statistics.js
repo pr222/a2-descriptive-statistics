@@ -32,9 +32,8 @@
 
 // TODO: Maximum #2
 
-function maxNumber(maximum) {
-  const maxNumber = Math.max(...maximum)
-  return maxNumber
+function maximum (number) {
+  return Math.max(...maximum)
 }
 
 
@@ -66,22 +65,26 @@ function maxNumber(maximum) {
  * @returns {StatisticalSummary} An object whose properties correspond to the descriptive statistics from the data set.
  */
 export function summary (numbers) {
+  const result = numbers
 
-  // TODO: Check if an array. If not, make a TypeError 
-  // It should then say "The passed argument is not an array."
+  // Check if an array. OK
+  if (!Array.isArray(numbers)) {
+    throw new TypeError('The passed argument is not an array.')
+  }
+  // Check if array has no elements. OK
+  if (Array.length !== 0) {
+    throw new Error('The passed array contains no elements.')
+  }
 
-  // TODO: Check if array has no elements. If not, make an Error
-  // It should then say "The passed array contains no elements"
-
-  // TODO: Check if array has only numbers. If not, make a TypeError
-  // It should then say "The passed array contains not just numbers."
-
-  // TODO: Number .NaN may not pass. Message:
-  // "The passed array may only contain valid numbers. "
-
-
-
+  // TODO: Check if array has only numbers.
+  if (typeof (numbers) !== 'number') {
+    throw new TypeError('The passed array my only contain valid numbers.')
+  }
+  // Number .NaN should not pass.
+  if (Number.isNaN(numbers) === true) {
+    throw new Error('The passed array may only contain valid numbers.')
+  }
 
   // TODO: Return the object StatisticalSummary with all the properties
-
+  return result
 }
