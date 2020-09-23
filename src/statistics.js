@@ -28,7 +28,32 @@
 //  Public interface
 // ------------------------------------------------------------------------------
 
-// TODO: Write your code here.
+// TODO: Medelvärdet #1
+
+// TODO: Maximum #2
+
+function maxNumber(maximum) {
+  const maxNumber = Math.max(...maximum)
+  return maxNumber
+}
+
+
+// TODO: Median #3
+
+// TODO: Minimum #4
+// Math.min
+
+// TODO: Mode #5
+// function to return the mode value, whatever that is...
+// Typvärde.
+
+// TODO: Range #6
+// function to return the range value, whatever that means...
+// Variationsbredd 
+
+// TODO: Deviation value #7
+// Standardavvikelse, the standard deviation value...
+
 
 /**
  * Returns several descriptive statistics (average, maximum, median, minimum,
@@ -41,5 +66,22 @@
  * @returns {StatisticalSummary} An object whose properties correspond to the descriptive statistics from the data set.
  */
 export function summary (numbers) {
-  // TODO: Write your code here.
+
+  // TODO: Check if an array. If not, make a TypeError 
+  // It should then say "The passed argument is not an array."
+
+  // TODO: Check if array has no elements. If not, make an Error
+  // It should then say "The passed array contains no elements"
+
+  // TODO: Check if array has only numbers. If not, make a TypeError
+  // It should then say "The passed array contains not just numbers."
+
+  // TODO: Number .NaN may not pass. Message:
+  // "The passed array may only contain valid numbers. "
+
+
+
+
+  // TODO: Return the object StatisticalSummary with all the properties
+
 }
