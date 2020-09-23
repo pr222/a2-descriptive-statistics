@@ -27,15 +27,23 @@
 // ------------------------------------------------------------------------------
 //  Public interface
 // ------------------------------------------------------------------------------
+const StatisticalSummary = {
+  average: 'number',
+  maximum: 'number',
+  median: 'number',
+  minimum: 'number',
+  mode: 'number[]',
+  range: 'number',
+  standardDeviation: 'number'
+}
 
 // TODO: Medelvärdet #1
 
 // TODO: Maximum #2
 
-function maximum (number) {
+function maximum (numbers) {
   return Math.max(...maximum)
 }
-
 
 // TODO: Median #3
 
@@ -48,11 +56,10 @@ function maximum (number) {
 
 // TODO: Range #6
 // function to return the range value, whatever that means...
-// Variationsbredd 
+// Variationsbredd
 
 // TODO: Deviation value #7
 // Standardavvikelse, the standard deviation value...
-
 
 /**
  * Returns several descriptive statistics (average, maximum, median, minimum,
@@ -77,14 +84,15 @@ export function summary (numbers) {
   }
 
   // TODO: Check if array has only numbers.
-  if (typeof (numbers) !== 'number') {
-    throw new TypeError('The passed array my only contain valid numbers.')
+  // TODO: Number .NaN should not pass.
+  if (typeof (numbers) !== 'number' || Number.isNaN(numbers) === true) {
+    throw new TypeError('The passed array may only contain valid numbers.')
   }
-  // Number .NaN should not pass.
+/*
   if (Number.isNaN(numbers) === true) {
     throw new Error('The passed array may only contain valid numbers.')
   }
-
+*/
   // TODO: Return the object StatisticalSummary with all the properties
   return result
 }
