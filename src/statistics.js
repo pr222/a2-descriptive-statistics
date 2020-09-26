@@ -39,16 +39,17 @@ const StatisticalSummary = {
 
 // TODO: Medelvärdet #1
 
-// TODO: Maximum #2
-
-function maximum (numbers) {
-  return Math.max(...maximum)
+// 2# Maximum --- TODO:Validator+Comment
+export function maximum (numbers) {
+  return Math.max(...numbers)
 }
 
 // TODO: Median #3
 
-// TODO: Minimum #4
-// Math.min
+// #4 Minimum --- TODO: Validator+Comment
+export function minimum (numbers) {
+  return Math.min(...numbers)
+}
 
 // TODO: Mode #5
 // function to return the mode value, whatever that is...
@@ -78,21 +79,17 @@ export function summary (numbers) {
   if (!Array.isArray(numbers)) {
     throw new TypeError('The passed argument is not an array.')
   }
-  // Check if array has no elements. OK
-  if (Array.length !== 0) {
+  // Check if array has no elements. OK?
+  if (numbers.length < 0) {
     throw new Error('The passed array contains no elements.')
   }
 
-  // TODO: Check if array has only numbers.
-  // TODO: Number .NaN should not pass.
-  if (typeof (numbers) !== 'number' || Number.isNaN(numbers) === true) {
+  // Check if array has only numbers. OK
+  // Number .NaN should not pass. OK
+  if (numbers !== 'number' || Number.isNaN) {
     throw new TypeError('The passed array may only contain valid numbers.')
   }
-/*
-  if (Number.isNaN(numbers) === true) {
-    throw new Error('The passed array may only contain valid numbers.')
-  }
-*/
+
   // TODO: Return the object StatisticalSummary with all the properties
   return result
 }
