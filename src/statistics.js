@@ -79,8 +79,8 @@ export function summary (numbers) {
   if (!Array.isArray(numbers)) {
     throw new TypeError('The passed argument is not an array.')
   }
-  // Check if array has no elements. OK?
-  if (numbers.length < 0) {
+  // Check if array has no elements. OK
+  if (numbers.length === 0) {
     throw new Error('The passed array contains no elements.')
   }
 
