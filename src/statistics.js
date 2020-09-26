@@ -39,15 +39,16 @@ const StatisticalSummary = {
 
 // TODO: Medelvärdet #1
 
-// 2# Maximum --- TODO:Validator+Comment
-export function maximum (numbers) {
+// 2# Maximum --- TODO: Comment
+export function maximum(numbers) {
+  checkValidity(numbers)
   return Math.max(...numbers)
 }
 
 // TODO: Median #3
 
 // #4 Minimum --- TODO: Validator+Comment
-export function minimum (numbers) {
+export function minimum(numbers) {
   return Math.min(...numbers)
 }
 
@@ -62,6 +63,25 @@ export function minimum (numbers) {
 // TODO: Deviation value #7
 // Standardavvikelse, the standard deviation value...
 
+// TODO: Add comment and fix side effects and return value
+export function checkValidity (numbers) {
+  const result = numbers
+  // Check if an array. OK
+  if (!Array.isArray(numbers)) {
+    throw new TypeError('The passed argument is not an array.')
+  }
+  // Check if array has no elements. OK
+  if (numbers.length === 0) {
+    throw new Error('The passed array contains no elements.')
+  }
+  // Check if array has only numbers. OK
+  // Number .NaN should not pass. OK
+  if (numbers !== 'number' || Number.isNaN) {
+    throw new TypeError('The passed array may only contain valid numbers.')
+  }
+  return result
+}
+
 /**
  * Returns several descriptive statistics (average, maximum, median, minimum,
  * mode, range and standard deviation) from a set of numbers.
@@ -72,24 +92,10 @@ export function minimum (numbers) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {StatisticalSummary} An object whose properties correspond to the descriptive statistics from the data set.
  */
-export function summary (numbers) {
+export function summary(numbers) {
+  checkValidity(numbers)
+
   const result = numbers
-
-  // Check if an array. OK
-  if (!Array.isArray(numbers)) {
-    throw new TypeError('The passed argument is not an array.')
-  }
-  // Check if array has no elements. OK
-  if (numbers.length === 0) {
-    throw new Error('The passed array contains no elements.')
-  }
-
-  // Check if array has only numbers. OK
-  // Number .NaN should not pass. OK
-  if (numbers !== 'number' || Number.isNaN) {
-    throw new TypeError('The passed array may only contain valid numbers.')
-  }
-
   // TODO: Return the object StatisticalSummary with all the properties
   return result
 }
