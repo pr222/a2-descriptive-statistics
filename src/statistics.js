@@ -37,18 +37,40 @@ const StatisticalSummary = {
   standardDeviation: 'number'
 }
 
-// TODO: Medelvärdet #1
+/**
+ * Calculates the average of the numbers.
+ *
+ * @param {number[]} numbers - The numbers to calculate.
+ * @returns {number} - The average value of all the numbers.
+ */
+export function average (numbers) {
+//  checkValidity(numbers) // Check if all numbers are valid. ******
+  const theTotal = numbers.reduce((a, b) => a + b, 0)
+  const howManyNumbers = numbers.length
+  return (theTotal / howManyNumbers)
+}
 
-// 2# Maximum --- TODO: Comment
-export function maximum(numbers) {
-  checkValidity(numbers)
+/**
+ * Calculates the maximum number.
+ *
+ * @param {number[]} numbers - The numbers to calculate.
+ * @returns {number} - The maximum value of all the numbers.
+ */
+export function maximum (numbers) {
+  checkValidity(numbers) // Check if all numbers are valid. ******
   return Math.max(...numbers)
 }
 
-// TODO: Median #3
+// TODO: Median #3 ******
 
-// #4 Minimum --- TODO: Validator+Comment
-export function minimum(numbers) {
+/**
+ * Calculates the minimum number.
+ *
+ * @param {number[]} numbers - The numbers to calculate.
+ * @returns {number} - The minimum value of all the numbers.
+ */
+export function minimum (numbers) {
+//  checkValidity(numbers) // Check if all numbers are valid. ******
   return Math.min(...numbers)
 }
 
@@ -63,19 +85,23 @@ export function minimum(numbers) {
 // TODO: Deviation value #7
 // Standardavvikelse, the standard deviation value...
 
-// TODO: Add comment and fix side effects and return value
+/**
+ * Will check the array so that returning array only has valid numbers.
+ *
+ * @param {numbers[]} numbers - The data to analyse
+ * @returns {numbers} Returns the numbers if they have not been thrown
+ */
 export function checkValidity (numbers) {
   const result = numbers
-  // Check if an array. OK
+  // Checks if an array.
   if (!Array.isArray(numbers)) {
     throw new TypeError('The passed argument is not an array.')
   }
-  // Check if array has no elements. OK
+  // Checks if array has no elements.
   if (numbers.length === 0) {
     throw new Error('The passed array contains no elements.')
   }
-  // Check if array has only numbers. OK
-  // Number .NaN should not pass. OK
+  // Checks if array has only numbers or if a numbers has the value of NaN
   if (numbers !== 'number' || Number.isNaN) {
     throw new TypeError('The passed array may only contain valid numbers.')
   }
@@ -92,7 +118,7 @@ export function checkValidity (numbers) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {StatisticalSummary} An object whose properties correspond to the descriptive statistics from the data set.
  */
-export function summary(numbers) {
+export function summary (numbers) {
   checkValidity(numbers)
 
   const result = numbers
