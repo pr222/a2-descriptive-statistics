@@ -61,7 +61,29 @@ export function maximum (numbers) {
   return Math.max(...numbers)
 }
 
-// TODO: Median #3 ******
+/**
+ * Finds the median number of the array.
+ *
+ * @param {number[]} numbers - The numbers to check.
+ * @returns {number} - The median value of the numbers.
+ */
+export function median (numbers) {
+  // checkValidity(numbers) // Check if all numbers are valid. ******
+  // Sort numbers from lowest to highest
+  const sortedNumbers = numbers.slice().sort(function (a, b) {
+    return a - b
+  })
+  // Finding the midpoint
+  const theMiddle = Math.floor(sortedNumbers.length / 2)
+  // Check if even number
+  if (sortedNumbers.length % 2 === 0) {
+  // Divide the sum of the two numbers in the middle
+    return (sortedNumbers[theMiddle] + sortedNumbers[theMiddle - 1]) / 2
+  } else {
+  // Returns the median if array has uneven amount of numbers
+    return sortedNumbers[theMiddle]
+  }
+}
 
 /**
  * Calculates the minimum number.
@@ -77,13 +99,23 @@ export function minimum (numbers) {
 // TODO: Mode #5
 // function to return the mode value, whatever that is...
 // Typvärde.
+export function mode (numbers) {
+
+
+}
 
 // TODO: Range #6
 // function to return the range value, whatever that means...
 // Variationsbredd
+export function range (numbers) {
+
+}
 
 // TODO: Deviation value #7
 // Standardavvikelse, the standard deviation value...
+export function standardDeviation (numbers) {
+
+}
 
 /**
  * Will check the array so that returning array only has valid numbers.
