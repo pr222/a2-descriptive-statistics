@@ -104,11 +104,15 @@ export function mode (numbers) {
 
 }
 
-// TODO: Range #6
-// function to return the range value, whatever that means...
-// Variationsbredd
+/**
+ * Calculates the range between numbers.
+ *
+ * @param {number[]} numbers - The numbers to calculate.
+ * @returns {number} - The range between the maximum and minimum number.
+ */
 export function range (numbers) {
-
+  // checkValidity(numbers) // Check if all numbers are valid. ******
+  return Math.max(...numbers) - Math.min(...numbers)
 }
 
 // TODO: Deviation value #7
