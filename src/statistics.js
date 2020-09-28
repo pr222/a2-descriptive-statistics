@@ -27,25 +27,15 @@
 // ------------------------------------------------------------------------------
 //  Public interface
 // ------------------------------------------------------------------------------
-/*
-const StatisticalSummary = {
-  average: 'number',
-  maximum: 'number',
-  median: 'number',
-  minimum: 'number',
-  mode: 'number[]',
-  range: 'number',
-  standardDeviation: 'number'
-}
-*/
+
 /**
  * Calculates the average of the numbers.
  *
- * @param {number[]} numbers - The numbers to calculate.
+ * @param {number} numbers - The numbers to calculate.
  * @returns {number} - The average value of all the numbers.
  */
 export function average (numbers) {
-  checkValidity(numbers) // Check if all numbers are valid. ******
+  checkValidity(numbers) // Check if all numbers are valid.
   /*  if (!Array.isArray(numbers)) {
     throw new TypeError('The passed argument is not an array.')
   }
@@ -66,22 +56,22 @@ export function average (numbers) {
 /**
  * Calculates the maximum number.
  *
- * @param {number[]} numbers - The numbers to calculate.
+ * @param {number} numbers - The numbers to calculate.
  * @returns {number} - The maximum value of all the numbers.
  */
 export function maximum (numbers) {
-//  checkValidity(numbers) // Check if all numbers are valid. ******
+  checkValidity(numbers) // Check if all numbers are valid. ******
   return Math.max(...numbers)
 }
 
 /**
  * Finds the median number of the array.
  *
- * @param {number[]} numbers - The numbers to check.
+ * @param {number} numbers - The numbers to check.
  * @returns {number} - The median value of the numbers.
  */
 export function median (numbers) {
-  // checkValidity(numbers) // Check if all numbers are valid. ******
+  checkValidity(numbers) // Check if all numbers are valid.
   // Sort numbers from lowest to highest
   const sortedNumbers = numbers.slice().sort(function (a, b) {
     return a - b
@@ -101,17 +91,24 @@ export function median (numbers) {
 /**
  * Calculates the minimum number.
  *
- * @param {number[]} numbers - The numbers to calculate.
+ * @param {number} numbers - The numbers to calculate.
  * @returns {number} - The minimum value of all the numbers.
  */
 export function minimum (numbers) {
-//  checkValidity(numbers) // Check if all numbers are valid. ******
+  checkValidity(numbers) // Check if all numbers are valid. 
   return Math.min(...numbers)
 }
 
-// TODO: Mode #5
+/**
+ * Finds the mode of numbers.
+ *
+ * @param {number[]} numbers - The numbers to go through.
+ * @returns {number} - The mode of numbers.
+ */
 export function mode (numbers) {
-
+  checkValidity(numbers) // Check if all numbers are valid.
+  // TODO: Mode #5
+  // sortera i ordning, näst kolla om de är lika, om lika adda
 }
 
 /**
@@ -121,20 +118,26 @@ export function mode (numbers) {
  * @returns {number} - The range between the maximum and minimum number.
  */
 export function range (numbers) {
-  // checkValidity(numbers) // Check if all numbers are valid. ******
+  checkValidity(numbers) // Check if all numbers are valid.
   return Math.max(...numbers) - Math.min(...numbers)
 }
 
-// TODO: Deviation value #7
+/**
+ * Calculates the standardDeviation.
+ *
+ * @param {number[]} numbers - The numbers to calculate.
+ * @returns {number} - The standard deviation.
+ */
 export function standardDeviation (numbers) {
-
+  checkValidity(numbers) // Check if all numbers are valid.
+// TODO: Deviation value #7
 }
 
 /**
  * Will check the array so that returning array only has valid numbers.
  *
  * @param {numbers[]} numbers - The data to analyse
- * @returns {numbers} Returns the numbers if they have not been thrown
+ * // @returns {numbers} Returns the numbers if they have not been thrown
  */
 export function checkValidity (numbers) {
   // const result = numbers
@@ -147,13 +150,13 @@ export function checkValidity (numbers) {
     throw new Error('The passed array contains no elements.')
   }
   // Checks if array has only numbers or if a numbers has the value of NaN
-  if (numbers !== 'number' || isNaN(numbers)) {
+  if (typeof numbers !== 'number' || isNaN(numbers)) {
     throw new TypeError('The passed array may only contain valid numbers.')
   }
   // return result
   // const checkedNumbers = Array.from(numbers)
   // return checkedNumbers
-  return numbers
+  // return numbers
 }
 
 /**
@@ -169,7 +172,17 @@ export function checkValidity (numbers) {
 export function summary (numbers) {
   checkValidity(numbers)
 
-  const result = numbers
-  // TODO: Return the object StatisticalSummary with all the properties
-  return result
+  const StatisticalSummary = {
+    average: average(numbers),
+    maximum: maximum(numbers),
+    median: median(numbers),
+    minimum: minimum(numbers),
+    mode: mode(numbers),
+    range: range(numbers),
+    standardDeviation: standardDeviation(numbers)
+  }
+  // Return the object StatisticalSummary with all the properties
+  /* return { average: average(numbers), maximum: maximum(numbers), median: median(numbers), minimum: minimum(numbers), mode: mode(numbers), range: range(numbers), standardDeviation: standardDeviation(numbers) }
+  */
+  return StatisticalSummary
 }
