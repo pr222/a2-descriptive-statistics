@@ -113,23 +113,61 @@ export function minimum (numbers) {
  */
 export function mode (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
-  // Sort numbers from lowest to highest
-  const sortedNumbers = numbers.slice().sort(function (a, b) {
-    return a - b
+
+  // Creating object to hold the occurrences of numbers.
+  const occurrence = {}
+  // // Adding amount of occurrences to the object.
+  // for (let i = 0; i < numbers.length; i++) {
+  //   if (!occurrence[numbers[i]]) {
+  //     occurrence[numbers[i]] = 1 // If there is none, add 1.
+  //   } else {
+  //     occurrence[numbers[i]] += 1 // Adds amount of occurrences.
+  //   }
+  // }
+  // Adding amount of occurrences to the object.
+  // for (const occurrence of numbers) {
+  //   // If there is none, add 1.
+  //   if (!occurrence[numbers]) {
+  //     occurrence[numbers] = 1      ------!!!!!!
+  //   // Adds amount of occurrences.
+  //   } else {
+  //     occurrence[numbers] += 1
+  //   }
+  // }
+  numbers.forEach(numbers => (occurrence[numbers] = occurrence + 1 || 1))
+  // Get the values of the occurrences.
+  const occurrenceValue = Object.values(occurrence)
+  // Sort values in numerical order, biggest first.
+  occurrenceValue.sort((a, b) => b - a)
+  const maxOccurrence = occurrence[0]
+  // const occurrenceKeys = Object.keys(occurrence)
+  // for (const key of Object.keys(occurrence)) {
+
+  // }
+
+  // Filter through
+  const modeNumbers = occurrence.filter(numbers => {
+    return occurrence[numbers] === maxOccurrence
   })
-
-  let modeNumbers = []
-  for (let i = 0; i < numbers.length; i++) {
-    if (i === sortedNumbers[i]) {
-      modeNumbers.push[i]
-    } else {
-      sortedNumbers++
-    }
-    return modeNumbers
-  }
-
-  // sortera i ordning, näst kolla om de är lika, om lika adda
+  return modeNumbers.sort((a, b) => a - b)
 }
+  // const occurrenceValues = Object.values(occurrence)
+  // // Sort numbers from lowest to highest
+  // const sortedNumbers = numbers.slice().sort(function (a, b) {
+  //   return a - b
+  // })
+
+  // let modeNumbers = []
+  // for (let i = 0; i < numbers.length; i++) {
+  //   if (i === sortedNumbers[i]) {
+  //     modeNumbers.push(numbers[i])
+  //   } else {
+  //     sortedNumbers++
+  //   }
+  //   return modeNumbers
+  // }
+  // sortera i ordning, näst kolla om de är lika, om lika adda
+  // occurrence and maxOccurrence
 
 /**
  * Calculates the range between numbers.
@@ -160,6 +198,8 @@ export function range (numbers) {
  */
 export function standardDeviation (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
+  // TODO: varianceNumber-function
+  // return Math.sqrt(varianceNumber())
 }
 
 /**
