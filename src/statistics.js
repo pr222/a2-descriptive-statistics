@@ -33,6 +33,9 @@
  *
  * @param {number} numbers - The numbers to calculate.
  * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} - The average value of all the numbers.
  */
 export function average (numbers) {
@@ -48,6 +51,9 @@ export function average (numbers) {
  *
  * @param {number} numbers - The numbers to calculate.
  * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} - The maximum value of all the numbers.
  */
 export function maximum (numbers) {
@@ -85,6 +91,9 @@ export function median (numbers) {
  *
  * @param {number} numbers - The numbers to calculate.
  * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} - The minimum value of all the numbers.
  */
 export function minimum (numbers) {
@@ -97,10 +106,27 @@ export function minimum (numbers) {
  *
  * @param {number[]} numbers - The numbers to go through.
  * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} - The mode of numbers.
  */
 export function mode (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
+  // Sort numbers from lowest to highest
+  const sortedNumbers = numbers.slice().sort(function (a, b) {
+    return a - b
+  })
+
+  let modeNumbers = []
+  for (let i = 0; i < numbers.length; i++) {
+    if (i === sortedNumbers[i]) {
+      modeNumbers.push[i]
+    } else {
+      sortedNumbers++
+    }
+    return modeNumbers
+  }
 
   // sortera i ordning, näst kolla om de är lika, om lika adda
 }
@@ -109,13 +135,17 @@ export function mode (numbers) {
  * Calculates the range between numbers.
  *
  * @param {number} numbers - The numbers to calculate.
+ * @function maximum - Calculates the maximum number.
+ * @function minimum - Calculates the minimum number.
  * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} - The range between the maximum and minimum number.
  */
 export function range (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
   return maximum(numbers) - minimum(numbers)
-//  return Math.max(...numbers) - Math.min(...numbers)
 }
 
 /**
@@ -123,6 +153,9 @@ export function range (numbers) {
  *
  * @param {number} numbers - The numbers to calculate.
  * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} - The standard deviation.
  */
 export function standardDeviation (numbers) {
@@ -161,6 +194,9 @@ export function checkValidity (numbers) {
  *
  * @param {number[]} numbers - The set of data to be analyzed.
  * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
  * @returns {StatisticalSummary} An object whose properties correspond to the descriptive statistics from the data set.
  */
 export function summary (numbers) {
