@@ -29,9 +29,10 @@
 // ------------------------------------------------------------------------------
 
 /**
- * Calculates the average of the numbers.
+ * Calculates the average value.
  *
  * @param {number} numbers - The numbers to calculate.
+ * @function checkValidity - Checks if input should throw errors.
  * @returns {number} - The average value of all the numbers.
  */
 export function average (numbers) {
@@ -46,6 +47,7 @@ export function average (numbers) {
  * Calculates the maximum number.
  *
  * @param {number} numbers - The numbers to calculate.
+ * @function checkValidity - Checks if input should throw errors.
  * @returns {number} - The maximum value of all the numbers.
  */
 export function maximum (numbers) {
@@ -57,6 +59,7 @@ export function maximum (numbers) {
  * Finds the median number of the array.
  *
  * @param {number} numbers - The numbers to check.
+ * @function checkValidity - Checks if input should throw errors.
  * @returns {number} - The median value of the numbers.
  */
 export function median (numbers) {
@@ -81,10 +84,11 @@ export function median (numbers) {
  * Calculates the minimum number.
  *
  * @param {number} numbers - The numbers to calculate.
+ * @function checkValidity - Checks if input should throw errors.
  * @returns {number} - The minimum value of all the numbers.
  */
 export function minimum (numbers) {
-  checkValidity(numbers) // Checks if all numbers are valid. 
+  checkValidity(numbers) // Checks if all numbers are valid.
   return Math.min(...numbers)
 }
 
@@ -92,6 +96,7 @@ export function minimum (numbers) {
  * Finds the mode of numbers.
  *
  * @param {number[]} numbers - The numbers to go through.
+ * @function checkValidity - Checks if input should throw errors.
  * @returns {number} - The mode of numbers.
  */
 export function mode (numbers) {
@@ -104,10 +109,11 @@ export function mode (numbers) {
  * Calculates the range between numbers.
  *
  * @param {number} numbers - The numbers to calculate.
+ * @function checkValidity - Checks if input should throw errors.
  * @returns {number} - The range between the maximum and minimum number.
  */
 export function range (numbers) {
-  // checkValidity(numbers) // Checks if all numbers are valid.
+  checkValidity(numbers) // Checks if all numbers are valid.
   return maximum(numbers) - minimum(numbers)
 //  return Math.max(...numbers) - Math.min(...numbers)
 }
@@ -116,6 +122,7 @@ export function range (numbers) {
  * Calculates the standardDeviation.
  *
  * @param {number} numbers - The numbers to calculate.
+ * @function checkValidity - Checks if input should throw errors.
  * @returns {number} - The standard deviation.
  */
 export function standardDeviation (numbers) {
@@ -126,10 +133,11 @@ export function standardDeviation (numbers) {
  * Will check the array so that returning array only has valid numbers.
  *
  * @param {numbers[]} numbers - The data to analyse
- * // @returns {numbers} Returns the numbers if they have not been thrown
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
  */
 export function checkValidity (numbers) {
-  // const result = numbers
   // Checks if an array.
   if (!Array.isArray(numbers)) {
     throw new TypeError('The passed argument is not an array.')
@@ -142,10 +150,6 @@ export function checkValidity (numbers) {
   if (typeof numbers !== 'number' || isNaN(numbers)) {
     throw new TypeError('The passed array may only contain valid numbers.')
   }
-  // return result
-  // const checkedNumbers = Array.from(numbers)
-  // return checkedNumbers
-  // return numbers
 }
 
 /**
@@ -153,9 +157,7 @@ export function checkValidity (numbers) {
  * mode, range and standard deviation) from a set of numbers.
  *
  * @param {number[]} numbers - The set of data to be analyzed.
- * @throws {TypeError} The passed argument is not an array.
- * @throws {Error} The passed array contains no elements.
- * @throws {TypeError} The passed array contains not just numbers.
+ * @function checkValidity - Checks if input should throw errors.
  * @returns {StatisticalSummary} An object whose properties correspond to the descriptive statistics from the data set.
  */
 export function summary (numbers) {
