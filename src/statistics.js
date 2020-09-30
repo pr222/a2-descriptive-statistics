@@ -147,15 +147,12 @@ export function checkValidity (numbers) {
     throw new Error('The passed array contains no elements.')
   }
   // Checks if array has only numbers or if a numbers has the value of NaN
-  // let checkedNumbers = 0
-  for (let i = 0; i < numbers.length; i++) {
+  const checkedNumber = numbers
+  checkedNumber.forEach((numbers) => {
     if (typeof numbers !== 'number' || isNaN(numbers)) {
       throw new TypeError('The passed array may only contain valid numbers.')
-    } // else {
-      // checkedNumbers++
-      // }
-  }
-  // return checkedNumbers
+    }
+  })
 }
 
 /**
