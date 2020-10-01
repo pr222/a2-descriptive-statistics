@@ -58,6 +58,7 @@ export function average (numbers) {
  */
 export function maximum (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
+
   return Math.max(...numbers)
 }
 
@@ -70,18 +71,20 @@ export function maximum (numbers) {
  */
 export function median (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
-  // Sort numbers from lowest to highest
+
+  // Sorts numbers from lowest to highest.
   const sortedNumbers = numbers.slice().sort(function (a, b) {
     return a - b
   })
-  // Finding the midpoint
+
+  // Finding the midpoint.
   const theMiddle = Math.floor(sortedNumbers.length / 2)
-  // Check if even number
+  // Checks if even number.
   if (sortedNumbers.length % 2 === 0) {
-  // Divide the sum of the two numbers in the middle
+  // Divide the sum of the two numbers in the middle and returns the result.
     return (sortedNumbers[theMiddle] + sortedNumbers[theMiddle - 1]) / 2
   } else {
-  // Returns the median if array has uneven amount of numbers
+  // Returns the median if array has uneven amount of numbers.
     return sortedNumbers[theMiddle]
   }
 }
@@ -98,6 +101,7 @@ export function median (numbers) {
  */
 export function minimum (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
+
   return Math.min(...numbers)
 }
 
@@ -114,10 +118,10 @@ export function minimum (numbers) {
 export function mode (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
 
-  // Creating object to hold the occurrences of numbers.
+  // Creates object to hold the occurrences of numbers.
   const occurrence = {}
 
-  // Adding amount of occurrences to the object.
+  // Adds amount of occurrences to the object.
   for (let i = 0; i < numbers.length; i++) {
     if (!occurrence[numbers[i]]) {
       occurrence[numbers[i]] = 1 // If there is none, add 1.
@@ -126,11 +130,11 @@ export function mode (numbers) {
     }
   }
 
-  // Get the values of the occurrences.
+  // Gets the values of the occurrences.
   const occurrenceValue = Object.values(occurrence)
-
-  // Sort values in numerical order, biggest first.
+  // Sorts values in numerical order, biggest first.
   occurrenceValue.sort((a, b) => b - a)
+  // Gets the biggest value from the first index.
   const maxOccurrence = occurrenceValue[0]
 
   // Creates new array for the mode-numbers.
@@ -161,6 +165,7 @@ export function mode (numbers) {
  */
 export function range (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
+
   return maximum(numbers) - minimum(numbers)
 }
 
@@ -197,7 +202,7 @@ export function checkValidity (numbers) {
   if (numbers.length === 0) {
     throw new Error('The passed array contains no elements.')
   }
-  // Checks if array has only numbers or if a numbers has the value of NaN
+  // Checks if array has only numbers or if a numbers has the value of NaN.
   const checkedNumber = numbers
   checkedNumber.forEach((numbers) => {
     if (typeof numbers !== 'number' || isNaN(numbers)) {
@@ -220,7 +225,7 @@ export function checkValidity (numbers) {
 export function summary (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
 
-  // Object with its properties and functionvalues.
+  // Object with its properties and function values.
   const statisticalSummary = {
     average: average(numbers),
     maximum: maximum(numbers),
