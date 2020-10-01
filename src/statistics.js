@@ -185,11 +185,12 @@ export function standardDeviation (numbers) {
   const theAverage = average(numbers)
 
   // New array with the variance numbers and squared.
-  const variance = numbers.flatMap((number) => (number - theAverage) * (number - theAverage))
+  const variance = numbers.map((number) => (number - theAverage) * (number - theAverage))
   // The total sum of the variances.
   const varianceSum = variance.reduce((a, b) => a + b)
 
-  const standardDev = Math.sqrt(varianceSum / (numbers.length - 1))
+  const toSquare = varianceSum / numbers.length
+  const standardDev = Math.sqrt(toSquare)
 
   return standardDev
 }
