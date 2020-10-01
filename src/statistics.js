@@ -181,8 +181,18 @@ export function range (numbers) {
  */
 export function standardDeviation (numbers) {
   checkValidity(numbers) // Checks if all numbers are valid.
-  // TODO: varianceNumber-function
-  // return Math.sqrt(varianceNumber())
+
+  const theAverage = average(numbers)
+
+  // New array with the variance numbers and squared.
+  const variance = numbers.flatMap((number) => (number - theAverage) * (number - theAverage))
+  // The total sum of the variances.
+  const varianceSum = variance.reduce((a, b) => a + b)
+  // The total sum to be divided.
+  const sum = (varianceSum - numbers.length * (theAverage * theAverage))
+  const standardDev = Math.sqrt(sum / numbers.length)
+
+  return standardDev
 }
 
 /**
