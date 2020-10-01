@@ -188,9 +188,8 @@ export function standardDeviation (numbers) {
   const variance = numbers.flatMap((number) => (number - theAverage) * (number - theAverage))
   // The total sum of the variances.
   const varianceSum = variance.reduce((a, b) => a + b)
-  // The total sum to be divided.
-  const sum = (varianceSum - numbers.length * (theAverage * theAverage))
-  const standardDev = Math.sqrt(sum / numbers.length)
+
+  const standardDev = Math.sqrt(varianceSum / (numbers.length - 1))
 
   return standardDev
 }
