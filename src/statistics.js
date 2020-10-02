@@ -129,7 +129,6 @@ export function mode (numbers) {
       occurrence[numbers[i]] += 1 // Adds amount of occurrences.
     }
   }
-
   // Gets the values of the occurrences.
   const occurrenceValue = Object.values(occurrence)
   // Sorts values in numerical order, biggest first.
@@ -147,7 +146,7 @@ export function mode (numbers) {
       modeNumbers.push(Number(key))
     }
   }
-  // Returns the mode of numbers in order with smallest number first.
+  // Returns the mode numbers in order with smallest number first.
   return modeNumbers.sort((a, b) => a - b)
 }
 
@@ -173,6 +172,7 @@ export function range (numbers) {
  * Calculates the standardDeviation.
  *
  * @param {number} numbers - The numbers to calculate.
+ * @function average - Calculates the average of numbers.
  * @function checkValidity - Checks if input should throw errors.
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -184,11 +184,10 @@ export function standardDeviation (numbers) {
 
   const theAverage = average(numbers)
 
-  // New array with the variance numbers and squared.
+  // New array with the variance numbers and square them.
   const variance = numbers.map((number) => (number - theAverage) * (number - theAverage))
-  // The total sum of the variances.
-  const varianceSum = variance.reduce((a, b) => a + b)
 
+  const varianceSum = variance.reduce((a, b) => a + b, 0)
   const toSquare = varianceSum / numbers.length
   const standardDev = Math.sqrt(toSquare)
 
