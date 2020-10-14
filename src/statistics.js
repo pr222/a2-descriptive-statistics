@@ -3,7 +3,7 @@
  *
  * @author Johan Leitet <johan.leitet@lnu.se>
  * @author Mats Loock <mats.loock@lnu.se>
- * @author // TODO: YOUR NAME <YOUR EMAIL>
+ * @author Pauliina Raitaniemi <pr222ja@student.lnu.se>
  * @version 1.0.0
  */
 
@@ -28,18 +28,222 @@
 //  Public interface
 // ------------------------------------------------------------------------------
 
-// TODO: Write your code here.
+/**
+ * Calculates the average value.
+ *
+ * @param {number} numbers - The numbers to calculate.
+ * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number} - The average value of all the numbers.
+ */
+export function average (numbers) {
+  checkValidity(numbers) // Checks if all numbers are valid.
+
+  const theTotal = numbers.reduce((a, b) => a + b, 0)
+  const howManyNumbers = numbers.length
+  return theTotal / howManyNumbers
+}
+
+/**
+ * Calculates the maximum number.
+ *
+ * @param {number} numbers - The numbers to calculate.
+ * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number} - The maximum value of all the numbers.
+ */
+export function maximum (numbers) {
+  checkValidity(numbers) // Checks if all numbers are valid.
+
+  return Math.max(...numbers)
+}
+
+/**
+ * Finds the median number of the array.
+ *
+ * @param {number} numbers - The numbers to check.
+ * @function checkValidity - Checks if input should throw errors.
+ * @returns {number} - The median value of the numbers.
+ */
+export function median (numbers) {
+  checkValidity(numbers) // Checks if all numbers are valid.
+
+  // Sorts numbers from lowest to highest.
+  const sortedNumbers = numbers.slice().sort(function (a, b) {
+    return a - b
+  })
+
+  // Finding the midpoint.
+  const theMiddle = Math.floor(sortedNumbers.length / 2)
+  // Checks if even number.
+  if (sortedNumbers.length % 2 === 0) {
+  // Divide the sum of the two numbers in the middle and returns the result.
+    return (sortedNumbers[theMiddle] + sortedNumbers[theMiddle - 1]) / 2
+  } else {
+  // Returns the median if array has uneven amount of numbers.
+    return sortedNumbers[theMiddle]
+  }
+}
+
+/**
+ * Calculates the minimum number.
+ *
+ * @param {number} numbers - The numbers to calculate.
+ * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number} - The minimum value of all the numbers.
+ */
+export function minimum (numbers) {
+  checkValidity(numbers) // Checks if all numbers are valid.
+
+  return Math.min(...numbers)
+}
+
+/**
+ * Finds the mode of numbers.
+ *
+ * @param {number[]} numbers - The numbers to go through.
+ * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number} - The mode of numbers.
+ */
+export function mode (numbers) {
+  checkValidity(numbers) // Checks if all numbers are valid.
+
+  // Creates object to hold the occurrences of numbers.
+  const occurrence = {}
+
+  // Adds amount of occurrences to the object.
+  for (let i = 0; i < numbers.length; i++) {
+    if (!occurrence[numbers[i]]) {
+      occurrence[numbers[i]] = 1 // If there is none, add 1.
+    } else {
+      occurrence[numbers[i]] += 1 // Adds amount of occurrences.
+    }
+  }
+  // Gets the values of the occurrences.
+  const occurrenceValue = Object.values(occurrence)
+  // Sorts values in numerical order, biggest first.
+  occurrenceValue.sort((a, b) => b - a)
+  // Gets the biggest value from the first index.
+  const maxOccurrence = occurrenceValue[0]
+
+  // Creates new array for the mode-numbers.
+  const modeNumbers = []
+
+  // Adds any number to array that maches the biggest value of the occurrences.
+  for (const key of Object.keys(occurrence)) {
+    if (occurrence[key] === maxOccurrence) {
+      // Adds to array and converts string to number.
+      modeNumbers.push(Number(key))
+    }
+  }
+  // Returns the mode numbers in order with smallest number first.
+  return modeNumbers.sort((a, b) => a - b)
+}
+
+/**
+ * Calculates the range between numbers.
+ *
+ * @param {number} numbers - The numbers to calculate.
+ * @function maximum - Calculates the maximum number.
+ * @function minimum - Calculates the minimum number.
+ * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number} - The range between the maximum and minimum number.
+ */
+export function range (numbers) {
+  checkValidity(numbers) // Checks if all numbers are valid.
+
+  return maximum(numbers) - minimum(numbers)
+}
+
+/**
+ * Calculates the standardDeviation.
+ *
+ * @param {number} numbers - The numbers to calculate.
+ * @function average - Calculates the average of numbers.
+ * @function checkValidity - Checks if input should throw errors.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number} - The standard deviation.
+ */
+export function standardDeviation (numbers) {
+  checkValidity(numbers) // Checks if all numbers are valid.
+
+  const theAverage = average(numbers)
+
+  // New array with the variance numbers and square them.
+  const variance = numbers.map((number) => (number - theAverage) * (number - theAverage))
+
+  const varianceSum = variance.reduce((a, b) => a + b, 0)
+  const toSquare = varianceSum / numbers.length
+  const standardDev = Math.sqrt(toSquare)
+
+  return standardDev
+}
+
+/**
+ * Will check the array so that returning array only has valid numbers.
+ *
+ * @param {numbers[]} numbers - The data to analyse
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ */
+export function checkValidity (numbers) {
+  // Checks if an array.
+  if (!Array.isArray(numbers)) {
+    throw new TypeError('The passed argument is not an array.')
+  }
+  // Checks if array has no elements.
+  if (numbers.length === 0) {
+    throw new Error('The passed array contains no elements.')
+  }
+  // Checks if array has only numbers or if a numbers has the value of NaN.
+  const checkedNumber = numbers
+  checkedNumber.forEach((numbers) => {
+    if (typeof numbers !== 'number' || isNaN(numbers)) {
+      throw new TypeError('The passed array may only contain valid numbers.')
+    }
+  })
+}
 
 /**
  * Returns several descriptive statistics (average, maximum, median, minimum,
  * mode, range and standard deviation) from a set of numbers.
  *
  * @param {number[]} numbers - The set of data to be analyzed.
+ * @function checkValidity - Checks if input should throw errors.
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {StatisticalSummary} An object whose properties correspond to the descriptive statistics from the data set.
  */
 export function summary (numbers) {
-  // TODO: Write your code here.
+  checkValidity(numbers) // Checks if all numbers are valid.
+
+  // Object with its properties and function values.
+  const statisticalSummary = {
+    average: average(numbers),
+    maximum: maximum(numbers),
+    median: median(numbers),
+    minimum: minimum(numbers),
+    mode: mode(numbers),
+    range: range(numbers),
+    standardDeviation: standardDeviation(numbers)
+  }
+
+  return statisticalSummary
 }
